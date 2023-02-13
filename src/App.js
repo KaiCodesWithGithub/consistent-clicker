@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { useCookies } from 'react-cookie';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [cookies, setCookie, removeCookie] = useCookies();
+
+    if (!cookies.count) {
+        setCookie("count", 0)
+    }
+
+    const incCount = () => {
+        setCookie("count", parseInt(cookies.count) + 1)
+        console.log(cookies)
+    }
+
+    return (
+        <div className="wrapper">
+            <div className="text">
+                <div className="static">The current count is:</div>
+                <br />
+                <div className="counter">{cookies.count}</div>
+            </div>
+            <div className="btnWrapper">
+                <button className="btnAdd btn" onClick={incCount}>Add</button>
+                <button className="btnRmv btn" onClick={() => removeCookie("count")}>Clear</button>
+            </div>
+        </div>
+    );
 }
 
 export default App;
