@@ -2,9 +2,9 @@ import './App.css';
 import { useCookies } from 'react-cookie';
 
 function App() {
-    const [cookies, setCookie, removeCookie] = useCookies();
+    const [cookies, setCookie, removeCookie] = useCookies(["count"]);
 
-    if (!cookies.count) {
+    if (cookies.count === "NaN") {
         setCookie("count", 0)
     }
 
