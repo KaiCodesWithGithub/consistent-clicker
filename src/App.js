@@ -13,6 +13,11 @@ function App() {
         console.log(cookies.count)
     }
 
+    const decCount = () => {
+        setCookie("count", parseInt(cookies.count) - 1, { maxAge: 31536000 })
+        console.log(cookies.count)
+    }
+
     return (
         <div className="wrapper">
             <div className="text">
@@ -21,7 +26,8 @@ function App() {
                 <div className="counter">{!cookies.count | cookies.count === "NaN" ? "0" : cookies.count}</div>
             </div>
             <div className="btnWrapper">
-                <button className="btnAdd btn" onClick={incCount}>Add</button>
+                <button className="btnAdd btn" onClick={incCount}>Increase</button>
+                <button className="btnAdd btn" onClick={decCount}>Decrease</button>
                 <button className="btnRmv btn" onClick={() => removeCookie("count")}>Clear</button>
             </div>
         </div>
