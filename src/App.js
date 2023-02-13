@@ -10,7 +10,7 @@ function App() {
 
     const incCount = () => {
         setCookie("count", parseInt(cookies.count) + 1)
-        console.log(cookies)
+        console.log(cookies.count)
     }
 
     return (
@@ -18,7 +18,7 @@ function App() {
             <div className="text">
                 <div className="static">The current count is:</div>
                 <br />
-                <div className="counter">{cookies.count}</div>
+                <div className="counter">{!cookies.count ? "0" : cookies.count}</div>
             </div>
             <div className="btnWrapper">
                 <button className="btnAdd btn" onClick={incCount}>Add</button>
